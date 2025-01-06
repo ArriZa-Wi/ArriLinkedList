@@ -48,6 +48,7 @@ class LinkedList:
         # When adding the very first node to the linked list (in this case, self.head), tail should be pointing to it as well.
         if self.size == 1:
             self.tail = self.head
+            
 
     def add_to_back(self, data):
         "add a new element to the front of the linked list"
@@ -56,8 +57,22 @@ class LinkedList:
 
         # Make a new Node and assign it to the self.tail variable.
         self.tail = self.Node()
-        
 
+        self.tail.data = data
+
+        # Since we are adding from the back, the node at the back should have its next pointer to null
+        self.tail.next = None # Although, technically not needed because constructor already sets the "next" variable of Node to None.
+
+        # When adding the very first node to the linked list (in this case, self.tail), head should be pointing to it as well.
+        self.size += 1
+        if self.size == 1:
+            self.head = self.tail
+
+        # When there are more than 1 nodes in the ll, the "next" attribute of the most previous node does not link to the newly added node. 
+        # This can be set up using the old_tail, since it is currently assigned to the previous node.
+        # The following will check if the ll has more than 1 node. It will then assign the .next of old_tail node to the new self.tail node.
+        else:
+            old_tail.next = self.tail
 
     def remove_from_front(self, data):
         "Remove an element from the front of the linked list"
