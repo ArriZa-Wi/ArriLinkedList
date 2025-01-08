@@ -76,6 +76,11 @@ class LinkedList:
 
     def remove_from_front(self, data):
         "Remove an element from the front of the linked list"
+        # If ll is empty, raise an error
+        if self.is_empty:
+            raise IndexError("List is empty")
+        
+        
 
     def remove_from_back(self, data):
         "remove element from the back of the linked list"
